@@ -70,7 +70,7 @@ def recommend_dishes(data, user_input):
 
 if st.button("Recommend"):
   if user_input:
-    recommended_dishes = recommend_dishes(filtered_df, user_input)
+    recommended_dishes = recommend_dishes(df, user_input)
     st.subheader("Recommended Dishes:")
 
     # Create a dictionary to store whether the ingredients expander is open for each dish
