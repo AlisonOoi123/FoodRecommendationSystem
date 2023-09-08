@@ -44,13 +44,9 @@ st.caption('by Valeria Filippou')
 
 user_input = st.text_input("Enter ingredients separated by commas:")
 
-df = pd.read_csv('/content/food-ingredients-and-recipe-dataset-with-images/Food Ingredients and Recipe Dataset with Image Name Mapping.csv')
+df = pd.read_csv('./Food Ingredients and Recipe Dataset with Image Name Mapping.csv')
 
-df = df[['Title', 'Cleaned_Ingredients', 'Image_Name']]
-filtered_df = df[df['Image_Name'] != "#NAME?"]
-
-# If you want to keep only specific columns (Title, Cleaned_Ingredients, Image_Name)
-filtered_df = filtered_df[['Title', 'Cleaned_Ingredients', 'Image_Name']]
+df = df[['Title', 'Cleaned_Ingredients']]
 
 def recommend_dishes(data, user_input):
   # Preprocess user input
@@ -69,7 +65,7 @@ def recommend_dishes(data, user_input):
 
   recommended_dishes = data.iloc[[index for index, _ in matching_dishes]]
 
-  return recommended_dishes[['Title', 'Cleaned_Ingredients', 'Image_Name']]
+  return recommended_dishes[['Title', 'Cleaned_Ingredients']]
 
 
 if st.button("Recommend"):
@@ -79,17 +75,6 @@ if st.button("Recommend"):
 
     # Create a dictionary to store whether the ingredients expander is open for each dish
     expanders_open = {}
-
-    # Calculate the number of columns based on the number of recipes to display
-    num_columns = 2  # Two columns
-    num_results_per_column = len(recommended_dishes) // num_columns
-
-    # Create two columns for the results
-    col1, col2 = st.columns(2)
-
-    # Initialize counters for each column
-    count_col1 = 0
-    count_col2 = 0
 
     for idx, row in recommended_dishes.iterrows():
       title = row['Title']
