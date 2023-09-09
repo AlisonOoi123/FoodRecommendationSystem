@@ -5,7 +5,6 @@ Welcome to the Food Recommendation System GitHub repository! This web app sugges
 ## Table of Contents
 
 - [About the App](#about-the-app)
-- [Getting Started](#getting-started)
 - [How to Use](#how-to-use)
 - [Feedback](#feedback)
 - [License](#license)
@@ -23,4 +22,21 @@ The app's frontend is designed with a custom HTML template to provide an appeali
 The app uses a dataset titled "Food Ingredients and Recipe Dataset with Image Name Mapping," which contains recipes' titles and cleaned ingredients. The dataset can be found [here](https://www.kaggle.com/datasets/pes12017000148/food-ingredients-and-recipe-dataset-with-images).
 
 
+## How to Use
+
+1. Visit the [Food Recommendation System](https://foodrecommendationsystem.streamlit.app) website.
+2. Enter the ingredients you would like to use in the text input field. Separate the ingredients with commas.
+3. Click the “Recommend” button to get a list of recommended dishes based on your input.
+4. Each recommended dish is expandable, so you can click on it to view the list of ingredients required for that dish.
+5. Explore and find a delicious dish to enjoy!
+
+## Feedback
+
+We value your feedback! If you’ve used this app and would like to rate it, please use the slider in the sidebar.
+
+Caution: This app is for entertainment and informational purposes only.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
 
