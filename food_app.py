@@ -122,5 +122,3 @@ feedback = st.sidebar.slider('How much would you rate this app?',min_value=0,max
 
 if feedback:
   st.header("Thank you for rating the app!")
-  st.info("Caution: This is just a prediction and not doctoral advice. Kindly see a doctor if you feel the symptoms persist.")
-
