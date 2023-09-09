@@ -73,34 +73,38 @@ if st.button("Recommend"):
     recommended_dishes = recommend_dishes(df, user_input)
     st.subheader("Recommended Dishes:")
 
-    # Create a dictionary to store whether the ingredients expander is open for each dish
-    expanders_open = {}
-
-    for idx, row in recommended_dishes.iterrows():
-      title = row['Title']
-      cleaned_ingredients = row['Cleaned_Ingredients']
-
-      # Create an expander for each dish
-      with st.expander(f"{title}", expanded=expanders_open.get(title, False)):
-
-        # st.markdown(cleaned_ingredients)
-        # Split the ingredients string at the comma
-        ingredients_list = [ingredient.lstrip("'") for ingredient in cleaned_ingredients.split("', ")]
-
-        # Remove "for serving" from each ingredient
-        ingredients_list = [ingredient.replace('for serving', '') for ingredient in ingredients_list]
-
-
-        # Check if the first ingredient starts with "[" and remove it
-        if ingredients_list[0].startswith("['"):
-          ingredients_list[0] = ingredients_list[0][2:]
-
-        # Check if the last ingredient ends with ']'
-        if ingredients_list[-1].endswith("']"):
-          ingredients_list[-1] = ingredients_list[-1][:-2]
-
-
-        st.markdown('\n'.join([f"- {ingredient}" for ingredient in ingredients_list]))
+    if not recommended_dishes.empty:
+      # Create a dictionary to store whether the ingredients expander is open for each dish
+      expanders_open = {}
+    
+      for idx, row in recommended_dishes.iterrows():
+        title = row['Title']
+        cleaned_ingredients = row['Cleaned_Ingredients']
+    
+        # Create an expander for each dish
+        with st.expander(f"{title}", expanded=expanders_open.get(title, False)):
+    
+          # st.markdown(cleaned_ingredients)
+          # Split the ingredients string at the comma
+          ingredients_list = [ingredient.lstrip("'") for ingredient in cleaned_ingredients.split("', ")]
+    
+          # Remove "for serving" from each ingredient
+          ingredients_list = [ingredient.replace('for serving', '') for ingredient in ingredients_list]
+    
+    
+          # Check if the first ingredient starts with "[" and remove it
+          if ingredients_list[0].startswith("['"):
+            ingredients_list[0] = ingredients_list[0][2:]
+    
+          # Check if the last ingredient ends with ']'
+          if ingredients_list[-1].endswith("']"):
+            ingredients_list[-1] = ingredients_list[-1][:-2]
+    
+    
+          st.markdown('\n'.join([f"- {ingredient}" for ingredient in ingredients_list]))
+    else:
+      st.write("No recommended dishes found. Please try a different combination of ingredients.")
+              
 
   else:
     st.warning("Please enter ingredients to get recommendations.")
