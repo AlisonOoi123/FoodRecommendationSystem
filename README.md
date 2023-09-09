@@ -38,5 +38,5 @@ Caution: This app is for entertainment and informational purposes only.
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the GNU GENERAL PUBLIC LICENSE. See the LICENSE file for details.
 
